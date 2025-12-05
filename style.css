@@ -1,0 +1,218 @@
+/* --- VARIÁVEIS GERAIS (O Segredo das Cores) --- */
+:root {
+    /* Paleta de Cores Modern Dark */
+    --bg-main: #0a0f1d;       /* Fundo principal bem escuro */
+    --bg-accent: #121a2e;     /* Fundo secundário (para seções alternadas) */
+    --text-primary: #ffffff;  /* Texto principal branco puro */
+    --text-secondary: #94a3b8;/* Texto secundário cinza azulado */
+    
+    /* Cores de Destaque (O Gradiente Principal) */
+    --primary-color: #6366f1; /* Roxo Indigo */
+    --secondary-color: #0ea5e9; /* Azul Claro */
+    --gradient-main: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+/* --- RESET E TIPOGRAFIA --- */
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+body { 
+    background-color: var(--bg-main); 
+    color: var(--text-secondary); 
+    font-family: 'Inter', sans-serif; 
+    line-height: 1.7; 
+    overflow-x: hidden; /* Evita barra de rolagem lateral indesejada */
+}
+
+h1, h2, h3, .logo, .btn { font-family: 'Poppins', sans-serif; color: var(--text-primary); }
+a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+ul { list-style: none; }
+
+/* Utilitários */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 100px 0; }
+.bg-accent { background-color: var(--bg-accent); }
+.section-title { font-size: 2.5rem; margin-bottom: 50px; position: relative; display: inline-block; }
+/* Aquele tracinho estiloso embaixo dos títulos */
+.section-title::after { content: ''; position: absolute; width: 50%; height: 4px; background: var(--gradient-main); bottom: -10px; left: 0; border-radius: 2px;}
+
+/* Efeito de Texto com Gradiente */
+.gradient-text {
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+
+/* --- NAVEGAÇÃO (Com efeito de vidro) --- */
+.navbar {
+    padding: 1.2rem 0;
+    position: fixed; /* Fica presa no topo */
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 15, 29, 0.85); /* Fundo transparente */
+    backdrop-filter: blur(10px); /* O efeito de "vidro embaçado" */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-weight: 700; font-size: 1.5rem; letter-spacing: -1px; }
+.nav-links { display: flex; gap: 2rem; align-items: center;}
+.nav-links a:hover { color: var(--secondary-color); }
+/* Botão especial no menu */
+.btn-nav { 
+    background: var(--gradient-main); 
+    padding: 8px 20px; 
+    border-radius: 50px; 
+    font-weight: 600; 
+    font-size: 0.9rem;
+}
+.btn-nav:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(99, 102, 241, 0.5); }
+
+
+/* --- HERO SECTION (Onde a mágica acontece) --- */
+.hero { 
+    padding-top: 160px; 
+    padding-bottom: 100px; 
+    min-height: 90vh; /* Ocupa quase a tela toda */
+    display: flex; 
+    align-items: center;
+}
+
+.hero-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.hero-text { flex: 1; }
+
+.tag-pill {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--secondary-color);
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-bottom: 20px;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+h1 { 
+    font-size: 3.5rem; 
+    line-height: 1.2; 
+    margin-bottom: 25px; 
+}
+
+.hero-description {
+    font-size: 1.15rem;
+    max-width: 500px;
+    margin-bottom: 35px;
+}
+
+/* Botões Principais */
+.buttons-wrapper { display: flex; gap: 15px; }
+.btn { padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; cursor: pointer; display: inline-block;}
+.btn-primary { background: var(--gradient-main); border: none; }
+/* O brilho "Glow" no botão principal */
+.btn-glow:hover { box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.6); transform: translateY(-3px); }
+.btn-secondary { background: transparent; border: 2px solid rgba(255, 255, 255, 0.1); color: var(--text-primary); }
+.btn-secondary:hover { border-color: var(--secondary-color); background: rgba(14, 165, 233, 0.1); }
+
+/* Imagem do Hero com moldura */
+.hero-image { flex: 1; display: flex; justify-content: center; }
+.image-frame {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    border-radius: 30px; /* Cantos arredondados modernos */
+    /* Um gradiente atrás da foto para dar um "tchan" */
+    background: var(--gradient-main);
+    padding: 5px; /* Espessura da borda colorida */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transform: rotate(3deg); /* Uma leve inclinada estilosa */
+    transition: 0.3s ease;
+}
+.image-frame:hover { transform: rotate(0deg) scale(1.02); } /* Fica reto quando passa o mouse */
+.image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 26px; /* Um pouco menos que o frame */
+    background-color: var(--bg-main);
+}
+
+
+/* --- SOBRE E SKILLS --- */
+.about-wrapper { display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; align-items: start;}
+.about-text p { margin-bottom: 20px; font-size: 1.05rem; }
+
+.skills-container h3 { margin-bottom: 25px; font-size: 1.3rem;}
+.tags-wrapper { display: flex; flex-wrap: wrap; gap: 10px; }
+/* As etiquetas de habilidade */
+.skill-tag {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+.skill-tag:hover { background: rgba(99, 102, 241, 0.2); border-color: var(--primary-color); color: var(--text-primary); }
+
+
+/* --- PROJETOS (Cartões Flutuantes) --- */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+
+.project-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Sombra suave para dar profundidade */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Efeito de "levantar" quando passa o mouse */
+.card-hover { transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
+.card-hover:hover { 
+    transform: translateY(-10px); /* Sobe 10 pixels */
+    border-color: var(--primary-color); 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.card-content { padding: 35px; }
+.project-card h3 { font-size: 1.4rem; margin-bottom: 15px; }
+.project-tech { 
+    display: inline-block; 
+    margin-top: 20px; 
+    font-size: 0.85rem; 
+    font-weight: 700; 
+    color: var(--secondary-color); 
+    text-transform: uppercase; letter-spacing: 1px;
+}
+
+/* --- RODAPÉ --- */
+.footer-section { padding: 100px 0; text-align: center; background: #070b14; }
+.email-big { font-size: 2rem; font-weight: 700; margin: 30px 0; display: block;}
+.footer-links a { margin: 0 10px; font-weight: 600; }
+.footer-links a:hover { color: var(--primary-color); }
+.copyright { margin-top: 50px; font-size: 0.9rem; opacity: 0.6;}
+
+
+/* --- RESPONSIVO (Para celular não quebrar) --- */
+@media (max-width: 968px) {
+    .hero-wrapper { flex-direction: column-reverse; text-align: center; gap: 30px; }
+    .hero-text { padding-top: 30px; }
+    h1 { font-size: 2.8rem; }
+    .buttons-wrapper { justify-content: center; }
+    .hero-image { width: 100%; }
+    .image-frame { width: 280px; height: 280px; transform: rotate(0); } /* Tira a inclinação no celular */
+    
+    .about-wrapper { grid-template-columns: 1fr; gap: 40px; }
+    .nav-links { display: none; } /* Esconde menu no celular por enquanto */
+}
